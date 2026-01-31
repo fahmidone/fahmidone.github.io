@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Storage | fahmid.me</title>
+    <style>
+        body { font-family: -apple-system, system-ui, sans-serif; background: #f0f2f5; display: flex; justify-content: center; padding: 40px 20px; }
+        .card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); width: 100%; max-width: 450px; }
+        h2 { margin-top: 0; font-size: 20px; color: #1c1e21; border-bottom: 2px solid #f0f2f5; padding-bottom: 10px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; }
+        button { width: 100%; padding: 12px; background: #007bff; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        button:hover { background: #0056b3; }
+        ul { list-style: none; padding: 0; margin-top: 20px; }
+        li { padding: 12px; border-bottom: 1px solid #f0f2f5; display: flex; align-items: center; }
+        li:last-child { border: none; }
+        a { text-decoration: none; color: #007bff; font-weight: 500; word-break: break-all; }
+        a:hover { text-decoration: underline; }
+        .hidden { display: none; }
+        .error { color: red; font-size: 14px; margin-top: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <div id="login-zone">
+        <h2>Private Storage</h2>
+        <input type="password" id="pass-input" placeholder="Enter Password" autofocus>
+        <button onclick="unlock()">Unlock Files</button>
+        <p id="err-msg" class="error"></p>
+    </div>
+
+    <div id="file-zone" class="hidden">
+        <h2>My Files</h2>
+        <ul id="file-list"><li>Loading files from GitHub...</li></ul>
+        <button onclick="location.reload()" style="background:#6c757d; margin-top:15px;">Lock</button>
+    </div>
+</div>
+
+<script>
+    // --- 1. CONFIGURATION ---
+    const GITHUB_USER = 'fahmidone';
+    const REPO_NAME = 'fahmidone.github.io';
+    const FOLDER_PATH = 'dl';
+    const MY_PASSWORD = 'fahmid.me';
+
+    // --- 2. PASSWORD LOGIC ---
+    function unlock() {
+        const input = document.getElementById('pass-input').value;
+        if (input === MY_PASSWORD) {
+            document.getElementById('login-zone').classList.add('hidden');
+            document.getElementById('file-zone').classList.remove('hidden');
+            fetchFiles();
+        } else {
+            document.getElementById('err-msg').innerText = "Incorrect password.";
+        }
+    }
+
+    // --- 3. AUTO-LIST LOGIC ---
+    async function fetchFiles() {
+        const url = `https://api.github.com/repos/${GITHUB_USER}/${REPO_NAME}/contents/${FOLDER_PATH}`;
+        const listContainer = document.getElementById('file-list');
+
+        try {
+            const response = await fetch(url);
+            const files = await response.json();
