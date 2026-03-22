@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery | Fahmid Hasan Mashud</title>
+    <meta
+      name="description"
+      content="Explore the visual archive of Fahmid Hasan Mashud. A collection of projects, photography, and science visual studies."
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      // Tailwind Configuration to match fahmid.me B&W aesthetic
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              // Using neutral tones for a sharp B&W feel
+              bg: "#000000", // True Black background
+              card: "#0a0a0a", // Slightly lighter black for cards
+              text: "#f5f5f5", // Soft white for text
+              accent: "#a3a3a3", // Gray for subtitles/borders
+            },
+          },
+        },
+      };
+    </script>
+
+    <style type="text/css">
+      /* Custom scrollbar for better B&W feel */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #000;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #a3a3a3;
+      }
+
+      /* Smooth transitions for hover effects */
+      .gallery-item img {
+        transition: transform 0.5s ease;
+      }
+      .gallery-item:hover img {
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+
+  <body class="bg-bg text-text antialiased min-h-screen font-sans">
+    <nav class="border-b border-neutral-800 bg-bg sticky top-0 z-50">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center"
+      >
+        <a
+          href="https://fahmid.me"
+          class="text-xl font-bold tracking-tight hover:text-accent transition"
+        >
+          Fahmid<span class="text-accent">.me</span>
+        </a>
+        <a
+          href="https://fahmid.me"
+          class="text-sm border border-neutral-700 px-4 py-1 rounded-full hover:bg-neutral-800 transition"
+        >
+          ← Back Home
+        </a>
+      </div>
+    </nav>
+
+    <header
+      class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center border-b border-neutral-900"
+    >
+      <h1
+        class="text-4xl md:text-5xl font-extrabold tracking-tighter mb-4 text-white"
+      >
+        Fahmid Archive
+      </h1>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+      <div
+        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8"
+      >
+        <div
+          class="gallery-item group bg-card border border-neutral-800 rounded-xl overflow-hidden shadow-2xl shadow-neutral-950/30 transition hover:border-accent"
+        >
+          <div class="aspect-[4/3] overflow-hidden bg-neutral-900">
+            <img
+              src="https://fahmid.me/img/fahmid.webp"
+              alt="Portrait of Fahmid Hasan Mashud"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+
+          <div
+            class="p-4 border-t border-neutral-800 group-hover:border-accent transition"
+          >
+            <h3 class="text-sm font-medium text-white tracking-tight truncate">
+              Fahmid Hasan Mashud
+            </h3>
+          </div>
+        </div>
+
+        <div
+          class="gallery-item group bg-card border border-neutral-800 rounded-xl overflow-hidden shadow-2xl shadow-neutral-950/30 transition hover:border-accent"
+        >
+          <div class="aspect-[4/3] overflow-hidden bg-neutral-900">
+            <img
+              src="https://fahmid.me/img/fahmid_eid26.webp"
+              alt="Fahmid Hasan Mashud in panjabi"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <div
+            class="p-4 border-t border-neutral-800 group-hover:border-accent transition"
+          >
+            <h3 class="text-sm font-medium text-white tracking-tight truncate">
+              Fahmid Hasan mashud in EID'26
+            </h3>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="border-t border-neutral-900 mt-16 bg-card">
+      <div
+        class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-sm text-accent"
+      >
+        <p>&copy; 2026 Fahmid Hasan Mashud. All visual rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // 1. List your image names here.
+      // Assuming your images are in: fahmid.me/images/gallery/
+      const images = [
+        { file: "project-a.webp", title: "Science Model A" },
+        { file: "web-design-1.jpg", title: "Homepage Draft" },
+        { file: "hsc-notes.png", title: "Biology Sketch" },
+        // ... Keep listing all 100+ images here ...
+      ];
+
+      const gridContainer = document.getElementById("image-grid");
+
+      // 2. Loop through the array and generate the HTML dynamically
+      images.forEach((img) => {
+        const cardHTML = `
+            <div class="gallery-item group bg-card border border-neutral-800 rounded-xl overflow-hidden shadow-2xl shadow-neutral-950/30 transition hover:border-accent">
+                <div class="aspect-[4/3] overflow-hidden bg-neutral-900">
+                    <img 
+                        src="/images/gallery/${img.file}" 
+                        alt="${img.title} - Visual Archive - Fahmid Hasan Mashud"
+                        class="w-full h-full object-cover"
+                        loading="lazy"
+                    />
+                </div>
+                <div class="p-4 border-t border-neutral-800 group-hover:border-accent transition">
+                    <h3 class="text-sm font-medium text-white tracking-tight truncate">${img.title}</h3>
+                </div>
+            </div>
+        `;
+        gridContainer.innerHTML += cardHTML;
+      });
+    </script>
+  </body>
+</html>
