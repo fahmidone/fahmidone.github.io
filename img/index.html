@@ -6,23 +6,22 @@
     <title>Gallery | Fahmid Hasan Mashud</title>
     <meta
       name="description"
-      content="Explore the visual archive of Fahmid Hasan Mashud. A collection of projects, photography, and science visual studies."
+      content="Explore the visual archive of Fahmid Hasan Mashud. A collection of projects, photography, and awesomeness."
     />
+    <link href="https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
     <script src="https://cdn.tailwindcss.com"></script>
 
     <script>
-      // Tailwind Configuration to match fahmid.me B&W aesthetic
       tailwind.config = {
         darkMode: "class",
         theme: {
           extend: {
             colors: {
-              // Using neutral tones for a sharp B&W feel
-              bg: "#000000", // True Black background
-              card: "#0a0a0a", // Slightly lighter black for cards
-              text: "#f5f5f5", // Soft white for text
-              accent: "#a3a3a3", // Gray for subtitles/borders
+              bg: "##242222",
+              card: "#0a0a0a",
+              text: "#f5f5f5",
+              accent: "#a3a3a3",
             },
           },
         },
@@ -30,7 +29,9 @@
     </script>
 
     <style type="text/css">
-      /* Custom scrollbar for better B&W feel */
+      :root {
+      font-family: "Arapey", serif;
+       }
       ::-webkit-scrollbar {
         width: 8px;
       }
