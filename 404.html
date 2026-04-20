@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Lost the Thread | fahmid.me</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Synced Animations */
+        @keyframes paw-bat {
+            0%, 100% { transform: rotate(0deg); }
+            15% { transform: rotate(-40deg); } /* Wind up */
+            25% { transform: rotate(20deg); }  /* Strike */
+            35% { transform: rotate(0deg); }   /* Return */
+        }
+
+        @keyframes ball-roll {
+            0%, 100% { transform: translateX(0) rotate(0deg); }
+            20% { transform: translateX(0) rotate(0deg); } /* Wait for paw strike */
+            35% { transform: translateX(120px) rotate(360deg); } /* Roll away */
+            60% { transform: translateX(120px) rotate(360deg); } /* Pause */
+            80% { transform: translateX(0) rotate(-180deg); } /* Slowly return */
+        }
+
+        @keyframes gradient-drift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .animate-paw {
+            transform-origin: 65px 75px;
+            animation: paw-bat 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .animate-ball {
+            animation: ball-roll 4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .bg-animate {
+            background-size: 200% 200%;
+            animation: gradient-drift 15s ease infinite;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-slate-950 via-[#0b0e14] to-blue-950 text-slate-200 h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-animate">
+
+    <div class="relative w-80 h-64 flex flex-col justify-end items-center mb-6">
+        
+        <svg class="w-56 h-56 drop-shadow-[0_0_20px_rgba(34,211,238,0.15)] z-10" viewBox="0 0 100 100">
+            <ellipse cx="50" cy="95" rx="35" ry="5" fill="#000000" opacity="0.4" />
+            
+            <path d="M20,90 Q20,35 50,35 Q80,35 80,90" fill="#1e293b"/>
+            
+            <path d="M22,45 L15,10 L45,35" fill="#1e293b"/>
+            <path d="M78,45 L85,10 L55,35" fill="#1e293b"/>
+            
+            <path d="M24,40 L18,18 L38,34" fill="#0f172a"/>
+            <path d="M76,40 L82,18 L62,34" fill="#0f172a"/>
+
+            <circle cx="38" cy="55" r="3.5" fill="#22d3ee" class="animate-pulse shadow-[0_0_10px_#22d3ee]"/>
+            <circle cx="62" cy="55" r="3.5" fill="#22d3ee" class="animate-pulse shadow-[0_0_10px_#22d3ee]"/>
+            
+            <path d="M48,65 L52,65 L50,68 Z" fill="#94a3b8"/>
+
+            <path d="M65,75 Q85,75 85,90" stroke="#38bdf8" stroke-width="5" stroke-linecap="round" fill="none" class="animate-paw drop-shadow-[0_0_8px_rgba(56,189,248,0.5)]"/>
+        </svg>
+
+        <div class="animate-ball absolute bottom-2 left-[55%] z-0">
+            <div class="w-7 h-7 rounded-full bg-gradient-to-tr from-pink-600 to-rose-400 shadow-[0_0_15px_rgba(244,63,94,0.6)] relative overflow-hidden flex items-center justify-center">
+                <div class="absolute top-1 left-1 w-2 h-2 bg-white rounded-full opacity-60"></div>
+                <div class="w-full h-[2px] bg-white/40 rotate-45"></div>
+                <div class="w-full h-[2px] bg-white/40 -rotate-45 absolute"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center z-10 px-6">
+        <h1 class="text-7xl font-bold tracking-tighter mb-2 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500">
+            404
+        </h1>
+        <h2 class="text-2xl font-medium mb-4 text-slate-300">Whoops! Page Not Found</h2>
+        <p class="text-slate-500 mb-8 max-w-md mx-auto">
+            Looks like this page got batted away into this digital world. Let's get you back to familiar territory.
+        </p>
+
+        <a href="https://fahmid.me" class="group relative inline-flex items-center justify-center px-8 py-3 text-base font-bold text-white transition-all duration-300 bg-blue-600 rounded-full hover:bg-cyan-500 hover:shadow-[0_0_25px_rgba(34,211,238,0.5)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 focus:ring-offset-slate-950">
+            <span class="absolute inset-0 w-full h-full -mt-1 rounded-lg opacity-30 bg-gradient-to-b from-transparent via-transparent to-black"></span>
+            <span class="relative flex items-center gap-2">
+                <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Return to @fahmid.me
+            </span>
+        </a>
+    </div>
+
+</body>
+</html>
